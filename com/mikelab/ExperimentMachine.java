@@ -25,6 +25,7 @@ public class ExperimentMachine{
 
 
       mMenu.put("Add","Adding new data");
+      mMenu.put("Remove","Removing date");
       mMenu.put("Display","Displaying all data");
       mMenu.put("quit","Exit the program");
   }
@@ -40,6 +41,10 @@ public class ExperimentMachine{
         switch(choice){
           case "add":
           promptNewData();
+          break;
+
+          case "remove":
+          removeData();
           break;
 
           case "display":
@@ -78,7 +83,6 @@ public class ExperimentMachine{
     return choice.trim().toLowerCase();
   }
 
-
   private void promptNewData() throws IOException{
     System.out.print("Enter the data key: ");
     String key = mReader.readLine();
@@ -86,6 +90,12 @@ public class ExperimentMachine{
     String value = mReader.readLine();
 
     mdataSet.put(key,value);
+  }
+
+  private void removeData() throws IOException{
+    System.out.print("Enter the data key that you want to remove: ");
+    String key = mReader.readLine();
+    mdataSet.remove(key);
   }
 
   private void displayData(){
